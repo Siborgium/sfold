@@ -47,5 +47,8 @@ std::cout << fold([](auto &a, auto &b) { return a + b; }, std::string(), data.rb
 ```cpp
 //Searching the greatest element for guaranteed O(N) complexity
 using sfd::foldl;
-std::cout << foldl([](auto &a, auto &b){ return a > b ? a : b; }, std::numeric_limits<int>::lowest(), 1, 3, 4, 7, 10, 21, 2, 4, 5); //21
+std::cout << foldl(
+                [](auto &a, auto &b){ return a > b ? a : b; },
+                std::numeric_limits<int>::lowest(),
+                1, 3, 4, 7, 10, 21, 2, 4, 5); //21
 ```
