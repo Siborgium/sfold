@@ -1,0 +1,7 @@
+#ifndef SIBORGIUM_FOLD
+#define SIBORGIUM_FOLD
+#include<iterator>
+#include<tuple>
+#include<utility>
+#include"src/fold.hpp"
+#endif
