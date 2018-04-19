@@ -4,5 +4,4 @@
 #include<tuple>
 #include<utility>
 #include"src/fold.hpp"
-#include"src/binary-functions.hpp"
 #endif

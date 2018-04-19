@@ -16,12 +16,12 @@ Speaking of folds only, there is still no right fold function for parameter pack
 ### Content
 **This repository is being developed currently, so this list can be edited (especially expanded) any time**
  - `fold` - this function takes a binary function, a start value and pair of iterators. It performs left fold on every argument of provided sequence and returns a result. You can perform a right fold by using pair reverse iterators. 
- - `foldl` - this function takes a binary function, a start value and parameter pack. It performs left fold on every argument of provided parameter pack and returns a result. 
+ - `foldl` - this function takes a binary function, a start value and parameter pack. It performs left fold on every argument of provided parameter pack and returns a result.
 
 ### Examples
 #### Basic rules
 Every fold function takes different count of parameters, but the core is simple:
- - The first parameter is always a binary function. 
+ - The first parameter is always a binary function.
  - The second parameter is always the start value.
 
 
@@ -49,4 +49,10 @@ std::cout << foldl(
                 [](auto &a, auto &b){ return a > b ? a : b; },
                 std::numeric_limits<int>::lowest(),
                 1, 3, 4, 7, 10, 21, 2, 4, 5); //21
+```
+
+#### Using <functional> functional objects as binary function
+```cpp
+using sfd::foldl;
+std::cout << foldl(std::logical_or(), true, false, false, false) << '\n'; //true
 ```
