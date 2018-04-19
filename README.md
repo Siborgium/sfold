@@ -1,5 +1,3 @@
-# sfold
-
 ## SFolD - Siborgium's fold
 
 ### What is it
@@ -23,9 +21,9 @@ Speaking of folds only, there is still no right fold function for parameter pack
 ### Examples
 #### Basic rules
 Every fold function takes different count of parameters, but the core is simple:
- - The first parameter is always a binary function.
+ - The first parameter is always a binary function. 
  - The second parameter is always the start value.
-You can use currying function to bind the binary function, if you wish to perform interesting functional things.
+
 
 #### Left fold on vector
 ```cpp
@@ -45,7 +43,7 @@ std::cout << fold([](auto &a, auto &b) { return a + b; }, std::string(), data.rb
 
 #### Left fold on parameter pack
 ```cpp
-//Searching the greatest element for guaranteed O(N) complexity
+//Searching the greatest element with guaranteed O(N) complexity
 using sfd::foldl;
 std::cout << foldl(
                 [](auto &a, auto &b){ return a > b ? a : b; },
