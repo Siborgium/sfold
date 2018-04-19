@@ -3,6 +3,7 @@
 #include<iterator>
 #include<tuple>
 #include<utility>
+
 /*
 @ namespace SFD
 @ this namespace contains various folding functions
@@ -18,8 +19,9 @@ namespace sfd {
 		@ start value of type T
 		* it is strongly recommended to avoid using start value somewhere else
 		* because start value will be overwritten while function works
-		@ two iterators of type Iter, begin and end
-		* these iterators aren't expected to be reverse iterators (but this condition is not necessary)
+		@ two iterators of type Iter: begin and end
+		* provide common iterators to perform a left fold
+		* provide reverse iterators to perform a right fold
 		*/
 	template<
 		typename _Callable,
@@ -42,8 +44,7 @@ namespace sfd {
 			}
 		return start;
 	}
-
-
+	
 	/*
 	 Left-fold function
 	 Required arguments:

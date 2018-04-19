@@ -3,7 +3,7 @@
 
 #define SFD_DECLARE_FUNCTION(name, action) struct name{\
 template<typename _T>\
-_T operator () (_T& a, _T& b){ return action; }\
+constexpr _T operator () (const _T& a, const _T& b){ return action; }\
 };\
 
 namespace sfd{
