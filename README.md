@@ -7,7 +7,7 @@ Small header-only C++17 folding library.
 Clone this repository or download it manually, then just `#include ".../sfold/fold"`.
 
 ### Why
-I created this repository for a few simple things. First, I need *not verbose* analog of functional `fold`, `reduce`, and so on. STL contains such functions, but they are ugly, verbose and made in very strange and *special* way.  And, for unknown reason, there is no such functions for parameter packs. So, here we are.
+I created this repository for a few simple things. First, I need *non-verbose* analog of functional `fold` (also called `reduce`), and so on. STL contains such functions, but they are ugly, verbose and made in very strange and *special* way.  And, for unknown reason, there is no such functions for parameter packs. So, here we are.
 
 ### To do
 I have many ideas, such as providing predefined basic functions to user.
@@ -53,6 +53,7 @@ std::cout << foldl(
 
 #### Using <functional> functional objects as binary function
 ```cpp
+//Evaluatuing multiple boolean conditions
 using sfd::foldl;
 std::cout << foldl(std::logical_or(), true, false, false, false) << '\n'; //true
 ```
