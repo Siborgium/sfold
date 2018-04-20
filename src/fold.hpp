@@ -11,7 +11,7 @@
 */
 namespace sfd {
 	/*
-	Left-fold function
+	Fold function
 	Required arguments:
 		@ binary function, taking two arguments of type T (see below) and returning one value of type T
 		* using Haskell-like notation, signature of this function is T -> T -> T
@@ -27,11 +27,11 @@ namespace sfd {
 		typename _Callable,
 		typename _T,
 		typename _Iter>
-		auto fold(
-			_Callable &&f,
-			_T &&start,
-			_Iter &&begin,
-			_Iter &&end)
+	auto fold(
+		_Callable &&f,
+		_T &&start,
+		_Iter &&begin,
+		_Iter &&end)
 	{
 		static_assert(
 			std::is_same_v<_T, typename std::iterator_traits<_Iter>::value_type>,
@@ -39,9 +39,9 @@ namespace sfd {
 		if (begin > end)
 			std::abort();
 		while (begin != end) {
-				start = f(start, *begin);
-				begin++;
-			}
+			start = f(start, *begin);
+			begin++;
+		}
 		return start;
 	}
 	
@@ -61,21 +61,21 @@ namespace sfd {
 		typename _Callable,
 		typename _T,
 		typename ... _Ts>
-		auto foldl(
-			_Callable &&f,
-			_T &&start,
-			_Ts&& ... args)
+	auto foldl(
+		_Callable &&f,
+		_T &&start,
+		_Ts&& ... args)
 	{
 		static_assert(sizeof... (args) > 0, "You should provide start value and atleast one argument");
 		auto argtuple = std::make_tuple(std::forward<_Ts>(args)...);
 		auto write_to = [&start](auto &&arg) { start = arg; };
 		std::apply(
 			[&write_to, &f, &start](auto&& item, auto&&... items)
-		{
-			start = f(start, item);
-			(write_to(f(start, items)), ...);
-		}
-		, std::forward<decltype(argtuple)>(argtuple));
+			{
+				start = f(start, item);
+				(write_to(f(start, items)), ...);
+			}
+			, std::forward<decltype(argtuple)>(argtuple));
 		return start;
 	}
 } //namespace sfd
